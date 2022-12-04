@@ -151,7 +151,7 @@ try:
         
         # loop through stream and append audio chunks to frame array
         for ii in range(0,int((samp_rate/chunk)*record_secs)):
-            data = stream.read(chunk)
+            data = stream.read(chunk,exception_on_overflow=False)
             frames.append(data)
 
         # print("finished recording")
