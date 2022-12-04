@@ -141,7 +141,7 @@ class_history = np.full(10, fill_value=4)
 try:
     while True: 
         # classifier loop
-        if platform.system == 'Windows':
+        if platform.system() == 'Windows':
             os.system('cls')
         else:
             # for linux platfrom
