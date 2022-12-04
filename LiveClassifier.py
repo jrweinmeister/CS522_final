@@ -135,7 +135,7 @@ print('Loading model...')
 with open(pkl_filename, 'rb') as file:
     pickle_model = pickle.load(file)
 
-class_history = np.full(10, fill_value="")
+class_history = np.full(10, fill_value=4)
 
 #Record and classify loop
 try:
@@ -167,8 +167,7 @@ try:
         # Get sample
         # Temporarily load data sample, replace with microphone
         audio_filename = 'live_recording.wav'
-        root_path = os.getcwd()
-        path = os.path.join(root_path, 'Data')
+        path = os.getcwd()
         sample_rate = 44100
         samples, classes = load_data(path, sample_rate, audio_filename)
 
@@ -182,7 +181,8 @@ try:
         print("Predictions: \nnewest")
         hist_iter = 0
         for prediction in class_history:
-            print(f"\tprediction {hist_iter}: {classes[prediction]}")
+            live_label = "" if prediction == 4 else classes[prediction]
+            print(f"\tprediction {hist_iter}: {live_label}")
             hist_iter += 1
             # print(f"Predicted: {classes[pred]}")
             # print(f"Expected: {label}")
