@@ -126,7 +126,6 @@ stream = audio.open(format=form_1, rate=samp_rate, channels=chans,
                     input_device_index=dev_index, input=True,
                     frames_per_buffer=chunk)
 print("recording")
-frames = []
 
 # Load model
 pkl_filename = "pickle_model.pkl"
@@ -148,7 +147,7 @@ try:
             os.system('clear')
 
         print("recording in progress ... ")
-        
+        frames=[]   # reset frames array
         # loop through stream and append audio chunks to frame array
         for ii in range(0,int((samp_rate/chunk)*record_secs)):
             data = stream.read(chunk,exception_on_overflow=False)
